@@ -3,202 +3,1768 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Mary!</title>
+  <title>Simon Ngugi | Full Stack Web Developer</title>
+  <meta name="description" content="Professional portfolio of Simon Ngugi, Full Stack Web Developer specializing in PHP, JavaScript, Python, and modern frameworks.">
+  <meta name="keywords" content="web developer Kenya, full stack developer, PHP developer, JavaScript expert, web design Nairobi, app development Kenya">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  
   <style>
-    body {
+    /* ===== Global Variables ===== */
+    :root {
+      --primary: #071b46;       /* Blue */
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;     /* Emerald */
+      --dark: #1e293b;          /* Dark blue-gray */
+      --darker: #0f172a;
+      --light: #f8fafc;         /* Light gray */
+      --accent: #f59e0b;        /* Amber */
+      --accent-dark: #d97706;
+      --white: #ffffff;
+      --black: #000000;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* ===== Base Styles ===== */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--white);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 50px;
+      max-width: 700px;
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .text-accent {
+      color: var(--accent);
+    }
+    
+    .text-secondary {
+      color: var(--secondary);
+    }
+    
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      cursor: pointer;
+      gap: 8px;
+      border: none;
+    }
+    
+    .btn-primary {
+      background-color: #1d4ed8;
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-accent {
+      background-color: var(--accent);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-accent:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* ===== Animations ===== */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInUp {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+    
+    .animate {
+      opacity: 0;
+    }
+    
+    .animate.animated {
+      opacity: 1;
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    
+    .slide-in-up {
+      animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    .slide-in-left {
+      animation: slideInLeft 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    .slide-in-right {
+      animation: slideInRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    .scale-in {
+      animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+    .delay-5 { animation-delay: 1s; }
+    
+    /* ===== Header & Navigation ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 20px 0;
+    }
+    
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-sm);
+      padding: 15px 0;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo-icon {
+      color: var(--accent);
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 10px;
+    }
+    
+    .nav-link {
+      color: var(--dark);
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 15px;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover:after {
+      width: calc(100% - 30px);
+    }
+    
+    .mobile-menu-toggle {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    .mobile-menu-toggle span {
+      display: block;
+      width: 30px;
+      height: 3px;
+      background: var(--dark);
+      transition: var(--transition);
+    }
+    
+    /* ===== Hero Section ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    
+    .hero-text {
+      flex: 1;
+    }
+    
+    .hero-image {
+      flex: 1;
+      position: relative;
+    }
+    
+    .hero-image img {
+      border-radius: 20px;
+      box-shadow: var(--shadow-xl);
+      transform: perspective(1000px) rotateY(-15deg);
+      transition: var(--transition-slow);
+    }
+    
+    .hero-image:hover img {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+    
+    .hero-description {
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .hero-social-links {
+      display: flex;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .hero-social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      color: var(--dark);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .hero-social-links a:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-5px);
+    }
+    
+    .hero-shape {
+      position: absolute;
+      z-index: -1;
+    }
+    
+    .shape-1 {
+      top: 10%;
+      left: 5%;
+      width: 300px;
+      height: 300px;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .shape-2 {
+      bottom: 10%;
+      right: 5%;
+      width: 200px;
+      height: 200px;
+      border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+      background: linear-gradient(45deg, var(--accent), var(--secondary));
+      opacity: 0.1;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    /* ===== About Section ===== */
+    .about {
+      background-color: var(--light);
+    }
+    
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    
+    .about-image {
+      flex: 1;
+      position: relative;
+    }
+    
+    .about-image img {
+      border-radius: 20px;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .about-image:before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      z-index: -1;
+      transition: var(--transition-slow);
+    }
+    
+    .about-image:hover:before {
+      top: 0;
+      left: 0;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+    }
+    
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .skill-icon {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    /* ===== Services Section ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid var(--primary);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .service-content {
+      padding: 30px;
+    }
+    
+    .service-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    
+    /* ===== Portfolio Section ===== */
+    .portfolio {
+      background-color: var(--light);
+    }
+    
+    .portfolio-filter {
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Align card to the top */
-      min-height: 100vh; /* Ensure body takes at least the viewport height */
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Arial', sans-serif;
-      /* Removed overflow: hidden to allow scrolling */
+      gap: 15px;
+      margin-bottom: 40px;
     }
-
-    .card {
+    
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 30px;
+      background: transparent;
+      border: 1px solid var(--light-gray);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    
+    /* ===== Experience Section ===== */
+    .timeline {
       position: relative;
-      width: 400px;
-      height: 1200px; /* Increased height to make the card scrollable */
-      background: linear-gradient(135deg, pink, white);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start; /* Align content to the top */
-      text-align: center;
-      padding: 20px;
-      margin: 20px 0; /* Add margin to ensure spacing */
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 0;
     }
-
-    .slideshow {
+    
+    .timeline:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: var(--light-gray);
+      transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
       width: 100%;
-      height: 600px; /* Increased height for the slideshow */
-      position: relative;
-      overflow: hidden;
-      border-radius: 15px;
     }
-
-    .slideshow img {
+    
+    .timeline-item:nth-child(odd) {
+      padding-right: calc(50% + 30px);
+      text-align: right;
+    }
+    
+    .timeline-item:nth-child(even) {
+      padding-left: calc(50% + 30px);
+      text-align: left;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    
+    .timeline-date {
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    
+    .timeline-content {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    
+    .timeline-content h3 {
+      margin-bottom: 10px;
+    }
+    
+    /* ===== Testimonials Section ===== */
+    .testimonials {
+      background-color: var(--light);
+    }
+    
+    .testimonials-slider {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .testimonial-item {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      margin: 0 15px;
+    }
+    
+    .testimonial-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 3px solid var(--primary);
+    }
+    
+    .testimonial-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .testimonial-text:before,
+    .testimonial-text:after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary);
+      opacity: 0.3;
       position: absolute;
-      top: 0;
+    }
+    
+    .testimonial-text:before {
+      top: -20px;
+      left: -10px;
+    }
+    
+    .testimonial-text:after {
+      bottom: -40px;
+      right: -10px;
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .testimonial-position {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .testimonial-rating {
+      color: var(--accent);
+      margin-top: 10px;
+    }
+    
+    /* ===== Contact Section ===== */
+    .contact-content {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .contact-info {
+      flex: 1;
+    }
+    
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+    
+    .contact-details {
+      margin-bottom: 40px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-text h4 {
+      margin-bottom: 5px;
+    }
+    
+    .contact-text a:hover {
+      color: var(--primary);
+    }
+    
+    .contact-form {
+      flex: 1;
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--light-gray);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    /* ===== Footer ===== */
+    footer {
+      background: var(--darker);
+      color: var(--white);
+      padding: 80px 0 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo-icon {
+      color: var(--accent);
+    }
+    
+    .footer-about p {
+      margin-bottom: 20px;
+      color: var(--light-gray);
+    }
+    
+    .footer-links h3 {
+      color: var(--white);
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
       left: 0;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      border-radius: 15px;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
     }
-
-    .slideshow img.active {
-      opacity: 1;
+    
+    .footer-links ul {
+      list-style: none;
     }
-
-    .message {
-      margin-top: 20px;
-      font-size: 18px;
-      color: #333;
-      line-height: 1.5;
-      text-align: left;
-      width: 90%;
-      height: 500px; /* Increased height for the message container */
-      overflow-y: auto; /* Make the message container scrollable */
-      padding-right: 10px; /* Add padding to prevent text from touching the scrollbar */
-    }
-
-    .message h1 {
-      font-size: 24px;
-      color: #ff6f61;
+    
+    .footer-links li {
       margin-bottom: 10px;
-      text-align: center;
     }
-
-    .typed-text {
-      display: inline-block;
-      white-space: pre-wrap;
+    
+    .footer-links a {
+      color: var(--light-gray);
+      transition: var(--transition);
     }
-
-    .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background: #333;
-      margin-left: 2px;
-      animation: blink 0.7s infinite;
+    
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
     }
-
-    .thanks-button {
-      display: none; /* Hidden by default */
+    
+    .footer-contact p {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: var(--light-gray);
+    }
+    
+    .footer-contact i {
+      color: var(--primary);
+      margin-top: 3px;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 15px;
       margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      color: white;
-      background-color: #25D366; /* WhatsApp green */
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
+    }
+    
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      transition: var(--transition);
+    }
+    
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--light-gray);
+      font-size: 0.9rem;
+    }
+    
+    /* ===== Back to Top Button ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+    
+    /* ===== Responsive Design ===== */
+    @media (max-width: 992px) {
+      .hero-content {
+        flex-direction: column;
+      }
+      
+      .hero-text {
+        order: 2;
+        text-align: center;
+      }
+      
+      .hero-image {
+        order: 1;
+        margin-bottom: 40px;
+      }
+      
+      .hero-buttons {
+        justify-content: center;
+      }
+      
+      .hero-social-links {
+        justify-content: center;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        margin-bottom: 40px;
+      }
+      
+      .contact-content {
+        flex-direction: column;
+      }
+      
+      .timeline:before {
+        left: 30px;
+      }
+      
+      .timeline-item {
+        padding-left: 80px !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+      }
+      
+      .timeline-dot {
+        left: 30px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        padding: 80px 30px 30px;
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition);
+      }
+      
+      .nav-menu.active {
+        left: 0;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .portfolio-filter {
+        flex-wrap: wrap;
+      }
+    }
+    
+    /* Mobile Menu Animation */
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
 
-    .thanks-button:hover {
-      background-color: #128C7E; /* Darker green on hover */
-    }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-@keyframes fadeInOut {
-  0% { opacity: 0; } /* Start with the image invisible */
-  10% { opacity: 1; } /* Quickly fade in the image */
-  90% { opacity: 1; } /* Keep the image visible for most of the animation */
-  100% { opacity: 0; } /* Fade out the image at the end */
+.portfolio-item {
+  background-color: #112240;
+  border-radius: 12px;
+  padding: 25px;
+  color: white;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
-.slideshow img {
-  animation: fadeInOut 10s infinite; /* Total animation duration for each image */
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Adjusted delays for smooth transitions */
-.slideshow img:nth-child(1) { animation-delay: 0s; }
-.slideshow img:nth-child(2) { animation-delay: 8s; } /* Overlap with the previous image */
-.slideshow img:nth-child(3) { animation-delay: 16s; }
-.slideshow img:nth-child(4) { animation-delay: 24s; }
-.slideshow img:nth-child(5) { animation-delay: 32s; }
-.slideshow img:nth-child(6) { animation-delay: 40s; }
-.slideshow img:nth-child(7) { animation-delay: 48s; }
-.slideshow img:nth-child(8) { animation-delay: 56s; }
-    .slideshow img {
-      animation: fadeInOut 64s infinite; /* Adjusted animation duration */
-    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="slideshow">
-      <img src="IMG-20250321-WA0004.jpg" alt="" class="active">
-      <img src="IMG-20250321-WA0003.jpg" alt="">
-      <img src="IMG-20250321-WA0002.jpg" alt="">
-      <img src="IMG-20250321-WA0005.jpg" alt="">
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="header-container">
+        <a href="#" class="logo">
+          <span class="logo-icon"><i class="fas fa-code"></i></span>
+          <span>Simon Ngugi</span>
+        </a>
+        
+        <div class="mobile-menu-toggle" id="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#contact" class="btn btn-primary">Hire Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-shape shape-1"></div>
+    <div class="hero-shape shape-2"></div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h4 class="hero-subtitle animate slide-in-left">Hello, I'm</h4>
+          <h1 class="hero-title animate slide-in-left delay-1">Simon Ngugi</h1>
+          <h4 class="hero-subtitle animate slide-in-left delay-2">Full Stack Web Developer</h4>
+          <p class="hero-description animate slide-in-left delay-3">I create beautiful, functional websites and applications with cutting-edge technologies. Based in Kiambu, Kenya, I help businesses establish their online presence.</p>
+          
+          <div class="hero-buttons animate slide-in-left delay-4">
+            <a href="#portfolio" class="btn btn-primary">
+              <i class="fas fa-eye"></i> View My Work
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fas fa-paper-plane"></i> Contact Me
+            </a>
+          </div>
+          
+          <div class="hero-social-links animate slide-in-left delay-5">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="hero-image animate scale-in delay-2">
+          <img src="me.jpg" alt="Simon Ngugi">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title animate slide-in-up">About Me</h2>
+      <p class="section-subtitle animate slide-in-up delay-1">Get to know me better</p>
       
+      <div class="about-content">
+        <div class="about-image animate slide-in-left">
+          <img src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Simon Ngugi">
+        </div>
+        
+        <div class="about-text animate slide-in-right">
+            <h3>I'm currently a student at KCA University</h3>
+            <p>I'm Simon Ngugi, a passionate Full Stack Web Developer and freelance software developer specializing in building modern, responsive websites, mobile apps, and SEO-optimized platforms.</p>
+            <p>As a student of Information Technology, I combine academic knowledge with real-world experience to create digital solutions for businesses and individuals. I also offer services such as website design, mobile application development, UI/UX design, backend development, and search engine optimization (SEO).</p>
+            <p>All GitHub demo websites are sample prototypes created to showcase ideas to potential clients. When a client likes the demo, I build them a fully customized, professional website or app. Payment is made only after the project is completed and meets their satisfaction.</p>
+          
+          
+          <div class="skills-list">
+            <div class="skill-item animate slide-in-up delay-1">
+              <span class="skill-icon"><i class="fas fa-check"></i></span>
+              <span>PHP Development</span>
+            </div>
+            <div class="skill-item animate slide-in-up delay-2">
+              <span class="skill-icon"><i class="fas fa-check"></i></span>
+              <span>JavaScript & Frameworks</span>
+            </div>
+            <div class="skill-item animate slide-in-up delay-3">
+              <span class="skill-icon"><i class="fas fa-check"></i></span>
+              <span>HTML5 & CSS3</span>
+            </div>
+            <div class="skill-item animate slide-in-up delay-4">
+              <span class="skill-icon"><i class="fas fa-check"></i></span>
+              <span>Python Programming</span>
+            </div>
+            <div class="skill-item animate slide-in-up delay-1">
+              <span class="skill-icon"><i class="fas fa-check"></i></span>
+              <span>Java Development</span>
+            </div>
+            <div class="skill-item animate slide-in-up delay-2">
+              <span class="skill-icon"><i class="fas fa-check"></i></span>
+              <span>C Programming</span>
+            </div>
+            <div class="skill-item animate slide-in-up delay-3">
+              <span class="skill-icon"><i class="fas fa-check"></i></span>
+              <span>Tailwind CSS</span>
+            </div>
+            <div class="skill-item animate slide-in-up delay-4">
+              <span class="skill-icon"><i class="fas fa-check"></i></span>
+              <span>Responsive Design</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
     </div>
-    <div class="message">
-      <h1>Happy Birthday Mary!</h1>
-      <div id="typed-text"></div>
-      <div class="cursor"></div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title animate slide-in-up">My Services</h2>
+      <p class="section-subtitle animate slide-in-up delay-1">What I offer to my clients</p>
+      
+      <div class="services-grid">
+        <div class="service-card animate slide-in-up">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Web Development</h3>
+            <p>Custom website development from simple landing pages to complex web applications using modern technologies and frameworks.</p>
+          </div>
+        </div>
+        
+        <div class="service-card animate slide-in-up delay-1">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Responsive Design</h3>
+            <p>Creating websites that look and function perfectly on all devices, from desktops to smartphones and tablets.</p>
+          </div>
+        </div>
+        
+        <div class="service-card animate slide-in-up delay-2">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>Designing intuitive user interfaces and seamless user experiences that engage visitors and drive conversions.</p>
+          </div>
+        </div>
+        
+        <div class="service-card animate slide-in-up delay-3">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>Backend Development</h3>
+            <p>Building robust server-side applications, APIs, and databases to power your web applications.</p>
+          </div>
+        </div>
+        
+        <div class="service-card animate slide-in-up delay-4">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3>E-Commerce Solutions</h3>
+            <p>Developing secure, scalable online stores with payment integration and inventory management.</p>
+          </div>
+        </div>
+        
+        <div class="service-card animate slide-in-up delay-4">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>SEO Optimization</h3>
+            <p>Optimizing websites to rank higher in search engines and attract more organic traffic.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <a id="thanks-button" class="thanks-button" href="https://wa.me/254773743248?text=Thanks..." target="_blank">Thanks</a>
-  </div>
+  </section>
+
+  <!-- Portfolio Section -->
+<!-- Portfolio Section -->
+<section class="portfolio" id="portfolio">
+    <div class="container">
+      <h2 class="section-title animate slide-in-up">Live Projects</h2>
+      <p class="section-subtitle animate slide-in-up delay-1">Websites I've launched for clients</p>
+  
+      <div class="portfolio-grid">
+        <!-- Live Project 1 -->
+        <div class="portfolio-item" data-category="web">
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">BrandX Sneaker Store</h3>
+            <p class="portfolio-category">E-commerce Website</p>
+            <div style="width: 100%; height: 500px; overflow: hidden; border-radius: 12px; margin: 15px 0; box-shadow: var(--shadow);">
+              <iframe 
+                src="https://www.brandx.co.ke" 
+                style="width: 375px; height: 667px; border: none; transform: scale(0.8); transform-origin: 0 0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <a href="https://www.brandx.co.ke" target="_blank" class="btn btn-primary btn-sm">Visit Site</a>
+          </div>
+        </div>
+  
+        <!-- Live Project 2 -->
+        <div class="portfolio-item" data-category="web">
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Aksa Genset Services</h3>
+            <p class="portfolio-category">Service Website</p>
+            <div style="width: 100%; height: 500px; overflow: hidden; border-radius: 12px; margin: 15px 0; box-shadow: var(--shadow);">
+              <iframe 
+                src="https://www.aksagensetservices.co.ke" 
+                style="width: 375px; height: 667px; border: none; transform: scale(0.8); transform-origin: 0 0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <a href="https://www.aksagensetservices.co.ke" target="_blank" class="btn btn-primary btn-sm">Visit Site</a>
+          </div>
+        </div>
+      </div>
+  
+      <br><br>
+  
+      <h2 class="section-title animate slide-in-up">Sample Demo Websites</h2>
+      <p class="section-subtitle animate slide-in-up delay-1">These are free prototypes to showcase ideas to clients</p>
+  
+      <div class="portfolio-grid">
+        <!-- Demo 1 -->
+        <div class="portfolio-item" data-category="demo">
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Golden Blades Barber & Spa</h3>
+            <p class="portfolio-category">Business Landing Page</p>
+            <div style="width: 100%; height: 500px; overflow: hidden; border-radius: 12px; margin: 15px 0; box-shadow: var(--shadow);">
+              <iframe 
+                src="https://symoh05.github.io/goldenblades" 
+                style="width: 375px; height: 667px; border: none; transform: scale(0.8); transform-origin: 0 0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <a href="https://symoh05.github.io/goldenblades" target="_blank" class="btn btn-primary btn-sm">View Demo</a>
+          </div>
+        </div>
+  
+        <!-- Demo 2 -->
+        <div class="portfolio-item" data-category="demo">
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Azizi Spa</h3>
+            <p class="portfolio-category">Spa Service Demo</p>
+            <div style="width: 100%; height: 500px; overflow: hidden; border-radius: 12px; margin: 15px 0; box-shadow: var(--shadow);">
+              <iframe 
+                src="https://symoh05.github.io/azizi" 
+                style="width: 375px; height: 667px; border: none; transform: scale(0.8); transform-origin: 0 0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <a href="https://symoh05.github.io/azizi" target="_blank" class="btn btn-primary btn-sm">View Demo</a>
+          </div>
+        </div>
+  
+        <!-- Demo 3 -->
+        <div class="portfolio-item" data-category="demo">
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Future Investment Real Estate</h3>
+            <p class="portfolio-category">Real Estate Showcase</p>
+            <div style="width: 100%; height: 500px; overflow: hidden; border-radius: 12px; margin: 15px 0; box-shadow: var(--shadow);">
+              <iframe 
+                src="https://symoh05.github.io/futureinvestment" 
+                style="width: 375px; height: 667px; border: none; transform: scale(0.8); transform-origin: 0 0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <a href="https://symoh05.github.io/futureinvestment" target="_blank" class="btn btn-primary btn-sm">View Demo</a>
+          </div>
+        </div>
+  
+        <!-- Demo 4 -->
+        <div class="portfolio-item" data-category="demo">
+          <div class="portfolio-content">
+            <h3 class="portfolio-title">Onel Electronics</h3>
+            <p class="portfolio-category">Product Showcase</p>
+            <div style="width: 100%; height: 500px; overflow: hidden; border-radius: 12px; margin: 15px 0; box-shadow: var(--shadow);">
+              <iframe 
+                src="https://symoh05.github.io/nextplug" 
+                style="width: 375px; height: 667px; border: none; transform: scale(0.8); transform-origin: 0 0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <a href="https://symoh05.github.io/nextplug" target="_blank" class="btn btn-primary btn-sm">View Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Experience Section -->
+<section class="experience" id="experience">
+    <div class="container">
+      <h2 class="section-title animate slide-in-up">My Experience</h2>
+      <p class="section-subtitle animate slide-in-up delay-1">Education and professional journey</p>
+  
+      <div class="timeline">
+        <!-- Education -->
+        <div class="timeline-item animate slide-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2020 - Present</div>
+          <div class="timeline-content">
+            <h3>KCA University</h3>
+            <p>Bachelor of Science in Information Technology</p>
+            <p>Specializing in Web Development, Software Engineering, and Database Management.</p>
+          </div>
+        </div>
+  
+        <!-- Freelance Work -->
+        <div class="timeline-item animate slide-in-up delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2021 - Present</div>
+          <div class="timeline-content">
+            <h3>Freelance Web & App Developer</h3>
+            <p>Designing and developing responsive websites, mobile apps, and backend systems for small businesses and startups across Kenya.</p>
+            <ul class="skills-list">
+              <li><i class="fas fa-check-circle skill-icon"></i> Full Stack Web Development</li>
+              <li><i class="fas fa-check-circle skill-icon"></i> UI/UX Design</li>
+              <li><i class="fas fa-check-circle skill-icon"></i> SEO Optimization</li>
+              <li><i class="fas fa-check-circle skill-icon"></i> Client Consultation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title animate slide-in-up">Get In Touch</h2>
+      <p class="section-subtitle animate slide-in-up delay-1">Have a project in mind? Let's talk</p>
+      
+      <div class="contact-content">
+        <div class="contact-info animate slide-in-left">
+          <h3>Contact Information</h3>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Location</h4>
+                <p>Kiambu, Kenya</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Phone</h4>
+                <p><a href="tel:+254777992666">+254 777 992 666</a></p>
+                <p><a href="tel:+254768924330">+254 768 924 330</a></p>
+                <p><a href="tel:+254773743248">+254 773 743 248</a></p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <p><a href="mailto:sngugi175@gmail.com">sngugi175@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-social-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-form animate slide-in-right">
+            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form animate slide-in-right">
+                <!-- Replace with your Access Key -->
+                <input type="hidden" name="access_key" value="857e96d1-5db0-4d9f-a51f-acb11b075e91">
+              
+                <!-- Optional: Redirect URL after submission -->
+                <!-- <input type="hidden" name="redirect" value="https://yourwebsite.com/thank-you"> -->
+              
+                <!-- Honeypot Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+              
+                <!-- Form Fields -->
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input type="text" id="name" name="name" class="form-control" required />
+                </div>
+              
+                <div class="form-group">
+                  <label for="email">Your Email</label>
+                  <input type="email" id="email" name="email" class="form-control" required />
+                </div>
+              
+                <div class="form-group">
+                  <label for="message">Your Message</label>
+                  <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+              
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <span class="footer-logo-icon"><i class="fas fa-code"></i></span>
+            <span>Simon Ngugi</span>
+          </div>
+          <p>Full Stack Web Developer specializing in creating modern, responsive websites and web applications.</p>
+          <p>Based in Kiambu, Kenya, I help businesses establish and enhance their online presence.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h3>My Services</h3>
+          <ul>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Responsive Design</a></li>
+            <li><a href="#">UI/UX Design</a></li>
+            <li><a href="#">Backend Development</a></li>
+            <li><a href="#">E-Commerce Solutions</a></li>
+            <li><a href="#">SEO Optimization</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Kiambu, Kenya</p>
+          <p><i class="fas fa-phone-alt"></i> +254 777 992 666</p>
+          <p><i class="fas fa-envelope"></i> sngugi175@gmail.com</p>
+          
+          <div class="footer-social">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Simon Ngugi. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#home" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
 
   <script>
-    const typedTextElement = document.getElementById('typed-text');
-    const thanksButton = document.getElementById('thanks-button');
-    const messages = [
-      "Dear Mary, 🎉",
-      "Happy birthday to you! 🌟",
-      "Thinking of you today and sending the warmest wishes your way. 💖",
-      "You have such a wonderful way of bringing light and positivity to everything you do. ✨",
-      "It's inspiring to see how you approach the world with such kindness and enthusiasm. 🌸",
-      "I hope your day is filled with joy, laughter, and everything that makes you smile – you deserve all the happiness coming your way. 🎂",
-      "The world is a brighter place with you in it, and I'm so grateful to know you. 🎁🎈",
-      "Wishing you a truly magical birthday! 🎊💕",
-      "From Simon ❤️" // Added "From Simon" as part of the typed message
-    ];
-
-    let messageIndex = 0;
-    let charIndex = 0;
-
-    function typeText() {
-      if (messageIndex < messages.length) {
-        const currentMessage = messages[messageIndex];
-
-        if (charIndex < currentMessage.length) {
-          // Add the next character
-          typedTextElement.innerHTML += currentMessage[charIndex];
-          charIndex++;
-          setTimeout(typeText, 50); // Typing speed
-        } else {
-          // Move to the next message
-          messageIndex++;
-          charIndex = 0;
-          typedTextElement.innerHTML += "<br><br>"; // Add space between lines
-          setTimeout(typeText, 1000); // Delay before next message
-        }
-      }
-    }
-
-    // Show the "Thanks" button when the user scrolls to the bottom
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    mobileMenu.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    
     window.addEventListener('scroll', () => {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        thanksButton.style.display = 'block';
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
       }
     });
-
-    typeText();
+    
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+    
+    // Portfolio filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filterValue = button.getAttribute('data-filter');
+        
+        portfolioItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Testimonials slider
+    let testimonialIndex = 0;
+    const testimonials = document.querySelectorAll('.testimonial-item');
+    
+    function showTestimonial(index) {
+      testimonials.forEach((testimonial, i) => {
+        testimonial.style.display = i === index ? 'block' : 'none';
+      });
+    }
+    
+    function nextTestimonial() {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      showTestimonial(testimonialIndex);
+    }
+    
+    // Initialize first testimonial
+    showTestimonial(testimonialIndex);
+    
+    // Auto-rotate testimonials
+    setInterval(nextTestimonial, 5000);
+    
+    // Animation on scroll
+    const animateElements = document.querySelectorAll('.animate');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    animateElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Here you would typically send the data to a server
+      // For this example, we'll just show an alert
+      alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
+      
+      // Reset form
+      contactForm.reset();
+    });
   </script>
 </body>
 </html>
